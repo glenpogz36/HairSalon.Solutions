@@ -1,5 +1,16 @@
 @{
   Layout = "_Layout";
 }
-  <p><a href='/'>Testing</a></p>
+
+
+@if (@Model.Count == 0)
+{
+  <h3>I will show a list of employees soon!</h3>
+}
+
+@foreach (var employee in Model)
+{
+  <h3><a href='/employee/@employee.GetId()'>@employee.GetName()</a></h3>
+}
+
 <p><a href='/'>Back home</a></p>

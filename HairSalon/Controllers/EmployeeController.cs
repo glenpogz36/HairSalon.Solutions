@@ -14,5 +14,14 @@ namespace HairSalon.Controllers
       return View();
     }
 
+    [HttpPost("/showemployee")]
+        public ActionResult Create(string Name)
+        {
+            Employee newEmployee = new Employee(Name);
+            List<Employee> allemployee = Employee.GetAll();
+            return View("Index", allemployee);
+
+        }
+
   }
 }
