@@ -6,7 +6,7 @@
 <ol>
 @foreach (var employee in @Model["employee"])
 {
-  <li><a href='/emplyee/@Model["employee"].GetId()/show)</a></li>
+  <li><a href='/employee/@Model["employee"].GetId()/employee/@employee.GetId()'>@employ.GetName()</a></li>
 }
 </ol>
 
