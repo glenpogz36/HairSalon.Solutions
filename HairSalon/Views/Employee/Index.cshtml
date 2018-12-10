@@ -1,16 +1,18 @@
 @{
   Layout = "_Layout";
 }
-
-
-@if (@Model.Count == 0)
-{
-  <h3>I will show a list of employees soon!</h3>
-}
-
+<ul>
 @foreach (var employee in Model)
 {
-  <h3><a href='/employee/@employee.GetId()'>@employee.GetName()</a></h3>
+    <li><a href="/employees/@employee.GetId()"> @employee.GetName()</a></li>
 }
-<p><a href='/employee/'>Add a new hire</a></p>
-<p><a href='/'>Back home</a></p>
+  </ul>
+  <br>
+
+<a href="/employees/new">Add New Hire</a>
+<a href="/specialties/new">Add a Specialty</a>
+  <hr>
+  <form action="employees/delete" method="post">
+  <button type="submit">Delete</button>
+  </form>
+<br>
