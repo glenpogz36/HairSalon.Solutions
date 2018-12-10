@@ -111,6 +111,74 @@ namespace HairSalon.Models
         }
       }
 
+      public void Delete()
+     {
+       MySqlConnection conn = DB.Connection();
+       conn.Open();
+
+       MySqlCommand cmd = new MySqlCommand("DELETE FROM employee WHERE id = @StylistId; DELETE FROM employees_specialties WHERE stylist_id = @StylistId;", conn);
+       MySqlParameter employeeIdParameter = new MySqlParameter();
+       employeeIdParameter.ParameterName = "@EmployeeId";
+       employeeIdParameter.Value = this.GetId();
+
+       cmd.Parameters.Add(employeeIdParameter);
+       cmd.ExecuteNonQuery();
+
+       if (conn != null)
+       {
+         conn.Close();
+       }
+     }
+
+      public static void DeleteAll()
+      {
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"TRUNCATE TABLE employee;";
+
+        cmd.ExecuteNonQuery();
+
+        conn.Close();
+        if (conn != null)
+        {
+          conn.Dispose();
+        }
+      }
+      public static Employee Find(int id)
+      {
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"SELECT * FROM `employee` WHERE id = @searchId;";
+
+        MySqlParameter searchId = new MySqlParameter();
+        searchId.ParameterName = "@searchId";
+        searchId.Value = id;
+        cmd.Parameters.Add(searchId);
+        var rdr = cmd.ExecuteReader() as MySqlDataReader;
+        int employeeId = 0;
+        string employeeName = "";
+
+        while (rdr.Read())
+        {
+          employeeId = rdr.GetInt32(1);
+          employeeName = rdr.GetString(0);
+        }
+        Employee foundEmployee = new Employee(employeeName, employeeId);
+
+
+        conn.Close();
+        if (conn != null)
+        {
+          conn.Dispose();
+        }
+        return foundEmployee;
+      }
+
+
 
     }
   }
