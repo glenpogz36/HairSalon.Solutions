@@ -178,7 +178,64 @@ namespace HairSalon.Models
         return foundEmployee;
       }
 
+      public List<Client> GetClients()
+      {
+        List<Client> allEmployeeClients = new List<Client> {};
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"SELECT * FROM clients WHERE employeeId = @employeeId;";
 
+        MySqlParameter employeeId = new MySqlParameter();
+        employeeId.ParameterName = "@employeeId";
+        employeeId.Value = this._id;
+        cmd.Parameters.Add(employeeId);
+
+
+        var rdr = cmd.ExecuteReader() as MySqlDataReader;
+        while(rdr.Read())
+        {
+          int clientId = rdr.GetInt32(0);
+          string clientName = rdr.GetString(1);
+          int clientEmployeeId = rdr.GetInt32(2);
+          Client newClient = new Client(clientName, clientEmployeeId, clientId);
+          allEmployeeClients.Add(newClient);
+        }
+        conn.Close();
+        if (conn != null)
+        {
+          conn.Dispose();
+        }
+        return allEmployeeClients;
+      }
+
+      public void Edit(string newName)
+      {
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"UPDATE employees SET name = @newName WHERE id = @searchId;";
+
+        MySqlParameter searchId = new MySqlParameter();
+        searchId.ParameterName = "@searchId";
+        searchId.Value = _id;
+        cmd.Parameters.Add(searchId);
+
+        MySqlParameter name = new MySqlParameter();
+        name.ParameterName = "@newName";
+        name.Value = newName;
+        cmd.Parameters.Add(name);
+
+        cmd.ExecuteNonQuery();
+        _name = newName;
+
+        conn.Close();
+
+        if (conn != null)
+        {
+          conn.Dispose();
+        }
+      }
 
     }
   }
