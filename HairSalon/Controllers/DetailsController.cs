@@ -15,13 +15,13 @@ namespace HairSalon.Controllers
     }
 
     [HttpGet("/specialties/new")]
-    public ActionResult CreateForm()
+    public ActionResult Create()
     {
       return View();
     }
 
     [HttpPost("/specialties")]
-    public ActionResult Create()
+    public ActionResult Createnew()
     {
       Specialty newSpecialty = new Specialty(Request.Form["new-specialty"]);
       newSpecialty.Save();
@@ -71,14 +71,14 @@ namespace HairSalon.Controllers
     }
 
     [HttpGet("/specialties/{specialtyId}/update")]
-    public ActionResult UpdateForm(int specialtyId)
+    public ActionResult Update(int specialtyId)
     {
       Specialty thisSpecialty = Specialty.Find(specialtyId);
       return View(thisSpecialty);
     }
 
     [HttpPost("/specialties/{specialtyId}/update")]
-    public ActionResult Update(int specialtyId)
+    public ActionResult Updatenew(int specialtyId)
     {
       Specialty thisSpecialty = Specialty.Find(specialtyId);
       thisSpecialty.Edit(Request.Form["new-specialty-name"]);
@@ -86,7 +86,7 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost("/specialties/delete")]
-    public ActionResult DeleteAll()
+    public ActionResult Delete()
     {
 
       Specialty.DeleteAll();

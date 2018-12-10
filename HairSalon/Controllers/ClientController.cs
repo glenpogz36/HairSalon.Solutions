@@ -15,7 +15,7 @@ namespace HairSalon.Controllers
     }
 
     [HttpGet("/employees/{employeeId}/clients/new")]
-    public ActionResult CreateForm(int employeeid)
+    public ActionResult Create(int employeeid)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
       Employee employee = Employee.Find(employeeid);
@@ -34,14 +34,14 @@ namespace HairSalon.Controllers
     }
 
     [HttpGet("/clients/{clientId}/update")]
-    public ActionResult UpdateForm(int clientId)
+    public ActionResult Update(int clientId)
     {
       Specialty thisClient = Specialty.Find(clientId);
       return View(thisClient);
     }
 
     [HttpPost("/clients/{clientId}/update")]
-    public ActionResult Update(int clientId)
+    public ActionResult Updatenew(int clientId)
     {
       Specialty thisClient = Specialty.Find(clientId);
       thisClient.Edit(Request.Form["new-client"]);
@@ -49,7 +49,7 @@ namespace HairSalon.Controllers
     }
 
     [HttpGet("/employees/employees/{employeeId}/delete")]
-    public ActionResult DeleteAll()
+    public ActionResult Delete()
     {
       Client.DeleteAll();
       return View();

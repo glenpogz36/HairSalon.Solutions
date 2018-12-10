@@ -15,13 +15,13 @@ namespace HairSalon.Controllers
   }
 
   [HttpGet("/employees/new")]
-  public ActionResult CreateForm()
+  public ActionResult Create()
   {
       return View();
   }
 
   [HttpPost("/employees")]
-  public ActionResult Create()
+  public ActionResult Createnew()
   {
       Employee newEmployee = new Employee(Request.Form["new-name"]);
       newEmployee.Save();
@@ -54,7 +54,7 @@ namespace HairSalon.Controllers
    }
 
   [HttpPost("/employees/delete")]
-  public ActionResult DeleteAll()
+  public ActionResult Delete()
   {
 
     Employee.DeleteAll();
