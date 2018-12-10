@@ -47,9 +47,9 @@ namespace HairSalon.Models
         return (idEquality && nameEquality);
       }
     }
-    public override int GetDB()
+    public override int GetHashCode()
     {
-      return this.GetDetailsName().GetDB();
+      return this.GetDetailsName().GetHashCode();
     }
 
     public static List<Details> GetAll()
