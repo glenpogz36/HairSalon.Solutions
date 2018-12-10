@@ -1,13 +1,16 @@
 @{
-  Layout = "_Layout";
+Layout = "_Layout";
 }
-<div class = "container">
- <h1>Add a new Employee</h1>
-<form action = "/employee/new" method = "post">
-    <label for= "name">Add a new employee:</label>
-    <input type = "text" name = "name">
-    <button type = "submit">Add a new employee</button>
-</form>
-<p><a href="/">Back Home</a></p>
-<p><a href="/employee">Back to Employee List.</a></p>
+
+<div class="w3-container">
+  <form action="/employees" method="post">
+    <hr>
+    <div class="w3-bar w3-green "><h3>New Employee</h3></div>
+    <hr>
+    <div class="form-group">
+      <label for="new-name">Name</label>
+      <input name="new-name" type="text">
+    </div>
+    <button type="submit" class="btn btn-info">Add</button>
+  </form>
 </div>

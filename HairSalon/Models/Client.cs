@@ -59,15 +59,15 @@ namespace HairSalon.Models
       conn.Open();
 
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"SELECT * FROM client;";
+      cmd.CommandText = @"SELECT * FROM clients;"; //select from clients
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
       while(rdr.Read())
       {
-        int clientId = rdr.GetInt32(1);
-        string clientName = rdr.GetString(0);
-        int id = rdr.GetInt32(2);
+        int clientId = rdr.GetInt32(0);
+        string clientName = rdr.GetString(1);
+        int clientEmployeeId = rdr.GetInt32(2);
 
-        Client newClient = new Client(clientName, id, clientId);
+        Client newClient = new Client(clientName, clientEmployeeId, clientId);
         allClients.Add(newClient);
       }
       conn.Close();
@@ -111,7 +111,7 @@ namespace HairSalon.Models
       conn.Open();
 
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"SELECT * FROM `client` WHERE id = @searchId;";
+      cmd.CommandText = @"SELECT * FROM `clients` WHERE id = @searchId;";
 
       MySqlParameter searchId = new MySqlParameter();
       searchId.ParameterName = "@searchId";
@@ -121,15 +121,15 @@ namespace HairSalon.Models
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
       int clientId = 0;
       string clientName = "";
-      int id = 0;
+      int clientEmployeeId = 0;
 
       while (rdr.Read())
       {
-        clientId = rdr.GetInt32(1);
-        clientName = rdr.GetString(0);
-        id = rdr.GetInt32(2);
+        clientId = rdr.GetInt32(0);
+        clientName = rdr.GetString(1);
+        clientEmployeeId = rdr.GetInt32(2);
       }
-      Client foundClient = new Client(clientName, id, clientId);
+      Client foundClient = new Client(clientName, clientEmployeeId, clientId);
 
       conn.Close();
       if(conn != null)
@@ -145,7 +145,7 @@ namespace HairSalon.Models
       conn.Open();
 
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"TRUNCATE TABLE client";
+      cmd.CommandText = @"TRUNCATE TABLE clients";
 
       cmd.ExecuteNonQuery();
 
@@ -161,7 +161,7 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
 
-      MySqlCommand cmd = new MySqlCommand("DELETE FROM client WHERE id = @ClientId;", conn);
+      MySqlCommand cmd = new MySqlCommand("DELETE FROM clients WHERE id = @ClientId;", conn);
       MySqlParameter clientIdParameter = new MySqlParameter();
       clientIdParameter.ParameterName = "@ClientId";
       clientIdParameter.Value = this.GetClientId();
@@ -180,7 +180,7 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"UPDATE client SET name = @newName WHERE id = @searchId;";
+      cmd.CommandText = @"UPDATE clients SET name = @newName WHERE id = @searchId;";
 
       MySqlParameter searchId = new MySqlParameter();
       searchId.ParameterName = "@searchId";
