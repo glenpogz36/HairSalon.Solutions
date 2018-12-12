@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 12, 2018 at 06:24 AM
+-- Generation Time: Dec 12, 2018 at 07:28 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -41,7 +41,9 @@ CREATE TABLE `clients` (
 INSERT INTO `clients` (`id`, `name`, `stylist_id`) VALUES
 (1, 'client1', 1),
 (2, 'client2', 1),
-(3, 'clienttest1', 3);
+(3, 'client3', 1),
+(4, 'test1', 2),
+(5, 'test2', 2);
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,7 @@ ALTER TABLE `stylists`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `stylists`
 --

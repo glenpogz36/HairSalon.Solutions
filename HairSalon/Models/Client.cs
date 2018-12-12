@@ -111,7 +111,7 @@ namespace HairSalon.Models
       }
     }
 
-    public static Client Find(int id)
+    public static Client Find(int Id)
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
@@ -121,7 +121,7 @@ namespace HairSalon.Models
 
       MySqlParameter searchId = new MySqlParameter();
       searchId.ParameterName = "@searchId";
-      searchId.Value = id;
+      searchId.Value = Id;
       cmd.Parameters.Add(searchId);
 
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
