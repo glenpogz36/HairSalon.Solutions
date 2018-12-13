@@ -154,7 +154,7 @@ namespace HairSalon.Models
           conn.Open();
 
           var cmd = conn.CreateCommand() as MySqlCommand;
-          cmd.CommandText = @"TRUNCATE TABLE clients";
+          cmd.CommandText = @"DELETE FROM clients";
 
           cmd.ExecuteNonQuery();
 
