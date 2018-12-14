@@ -1,0 +1,13 @@
+@{
+  Layout = "_Layout";
+}
+ <div class="container">
+<h1>Edit Title</h1>
+<hr>
+<h2>Edit: @Model.GetTitle()</h2>
+<form action="/books/@Model.GetId()" method="post">
+  <label name="newTitle">New Author's Name</label>
+  <input id="newTitle" type="text" name="newTitle" value="@Model.GetTitle()">
+  <Button class="btn btn-info" type="submit">Update</Button>
+</form>
+</div>
