@@ -4,10 +4,10 @@
  <div class="container">
 <h1>Edit Speacialty</h1>
 <hr>
-<h2>Edit: @Model.GetTitle()</h2>
+<h2>Edit: @Model.GetStylist()</h2>
 <form action="/stylists/@Model.GetId()" method="post">
   <label name="newStylist">New Style</label>
-  <input id="newStylist" type="text" name="newStylist" value="@Model.GetTitle()">
+  <input id="newStylist" type="text" name="newStylist" value="@Model.GetStylist()">
   <Button class="btn btn-info" type="submit">Update</Button>
 </form>
 </div>

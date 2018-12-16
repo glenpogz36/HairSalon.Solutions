@@ -7,11 +7,11 @@ namespace HairSalon.Controllers
 {
     public class EmployeeController : Controller
     {
-         [HttpGet("/employees")]
+        [HttpGet("/employees")]
         public ActionResult Index()
         {
-            List<Employee> allEmployee= Employee.GetAll();
-            return View(allEmployee);
+            List<Employee> allEmployees = Employee.GetAll();
+            return View(allEmployees);
         }
         [HttpGet("/employees/new")]
         public ActionResult New()
@@ -19,21 +19,21 @@ namespace HairSalon.Controllers
             return View();
         }
         [HttpPost("/employees")]
-        public ActionResult Index(string employeeName)
+        public ActionResult Index(string employeename)
         {
-            Employee employee = new Employee(employeeName);
+            Employee employee = new Employee(employeename);
             employee.Save();
-            List<Employee> allEmployee= Employee.GetAll();
-            return View(allEmployee);
+            List<Employee> allEmployees = Employee.GetAll();
+            return View(allEmployees);
         }
         [HttpGet("/employees/{id}")]
         public ActionResult Show(int id)
         {
-            Dictionary<string,object> model= new Dictionary<string,object>();
-            Employee employee= Employee.Find(id);
-            List<Stylist> employeeStylist = employee.GetStylist();
-            model.Add("employee",employee);
-            model.Add("employeeStylist",employeeStylist);
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            Employee employee = Employee.Find(id);
+            List<Stylist> employeeStylists = employee.GetStylists();
+            model.Add("employee", employee);
+            model.Add("employeeStylists", employeeStylists);
             return View(model);
         }
         [HttpGet("/employees/{id}/edit")]
@@ -47,10 +47,10 @@ namespace HairSalon.Controllers
         {
             Employee employee = Employee.Find(id);
             employee.Edit(newEmployee);
-            Dictionary<string,object> model= new Dictionary<string,object>();
-            List<Stylist> employeeStylist = employee.GetStylist();
-            model.Add("employee",employee);
-            model.Add("employeeStylist",employeeStylist);
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            List<Stylist> employeeStylists = employee.GetStylists();
+            model.Add("employee", employee);
+            model.Add("employeeStylists", employeeStylists);
             return View(model);
         }
 

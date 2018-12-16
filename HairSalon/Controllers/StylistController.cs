@@ -11,55 +11,55 @@ namespace HairSalon.Controllers
         [HttpGet("/stylists")]
         public ActionResult Index()
         {
-            List<Stylist> allStylists= Stylist.GetAll();
-            return View(allStylists);
+            List<Stylist> allStylits = Stylist.GetAll();
+            return View(allStylits);
         }
         [HttpGet("/stylists/new")]
         public ActionResult New()
         {
-             List<Employee> allEmployees= Employee.GetAll();
+            List<Employee> allEmployees = Employee.GetAll();
             return View(allEmployees);
         }
         [HttpPost("/stylists")]
-        public ActionResult Index(string stylistname, int style, int customer)
+        public ActionResult Index(string stylistname, int stylistemployee, int customers)
         {
-            Stylist stylist = new Stylist(stylistname);
-            stylist.Save();
-            stylist.AddEmployee(style);
-            stylist.AddCustomer(customer);
-            List<Stylist> allStylists= Stylist.GetAll();
+            Stylist stylists = new Stylist(stylistname);
+            stylists.Save();
+            stylists.AddEmployee(stylistemployee);
+            stylists.AddCustomers(customers);
+            List<Stylist> allStylists = Stylist.GetAll();
 
             return View(allStylists);
         }
         [HttpGet("/stylists/{id}")]
         public ActionResult Show(int id)
         {
-            Dictionary<string,object> model = new Dictionary<string,object>();
-            Stylist stylists= Stylist.Find(id);
-            Employee employees= stylists.GetEmployee();
-            List<Client> clients = stylists.GetClient();
-            model.Add("stylists",stylists);
-            model.Add("employees",employees);
-            model.Add("clients",clients);
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            Stylist stylist = Stylist.Find(id);
+            Employee employee = stylist.GetEmployee();
+            List<Client> clients = stylist.GetClients();
+            model.Add("stylist", stylist);
+            model.Add("employee", employee);
+            model.Add("clients", clients);
             return View(model);
         }
         [HttpGet("/stylists/{id}/edit")]
         public ActionResult Edit(int id)
         {
-            Stylist stylists = Stylist.Find(id);
-            return View(stylists);
+            Stylist stylist = Stylist.Find(id);
+            return View(stylist);
         }
         [HttpPost("/stylists/{id}")]
-        public ActionResult Show(string newTitle, int id)
+        public ActionResult Show(string newStylist, int id)
         {
-            Stylist stylists = Stylist.Find(id);
-            stylists.Edit(newTitle);
-            Dictionary<string,object> model = new Dictionary<string,object>();
-            Employee employees= stylists.GetEmployee();
-            List<Client> clients = stylists.GetClient();
-            model.Add("stylists",stylists);
-            model.Add("employees",employees);
-            model.Add("clients",clients);
+            Stylist stylist = Stylist.Find(id);
+            stylist.Edit(newStylist);
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            Employee employee = stylist.GetEmployee();
+            List<Client> clients = stylist.GetClients();
+            model.Add("stylist", stylist);
+            model.Add("employee", employee);
+            model.Add("clients", clients);
             return View(model);
         }
     }

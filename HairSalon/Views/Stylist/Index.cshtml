@@ -3,11 +3,11 @@
 }
 <hr>
 <div class="container">
-<h1>Here are all the available Syles</h1>
+<h1>Here are all the available Styles</h1>
 <ol>
 @foreach (var stylist in Model)
 {
-    <li><h2><a href="/stylists/@stylist.GetId()">@stylist.GetStyle() </a></h2> <a href="/stylists/@stylist.GetId()/edit" >Edit</a></li>
+    <li><h2><a href="/stylists/@stylist.GetId()">@stylist.GetStylist() </a></h2> <a href="/stylists/@stylist.GetId()/edit" >Edit</a></li>
 }
 </ol>
 </div>

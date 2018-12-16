@@ -19,62 +19,62 @@ namespace HairSalon.Controllers
             return View();
         }
         [HttpPost("/clients")]
-        public ActionResult Index(string clientName)
+        public ActionResult Index(string clientname)
         {
-            Client Client = new Client(clientName);
-            Client.Save();
+            Client client = new Client(clientname);
+            client.Save();
             List<Client> allClients = Client.GetAll();
             return View(allClients);
         }
         [HttpGet("/clients/{id}")]
         public ActionResult Show(int id)
         {
-            Dictionary<string,object> model= new Dictionary<string,object>();
-            Client Client = Client.Find(id);
-            List<Stylist> clientStylist= Client.GetStylist();
-            model.Add("Client",Client);
-            model.Add("clientStylist",clientStylist);
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            Client client = Client.Find(id);
+            List<Stylist> clientStylists = client.GetStylists();
+            model.Add("client", client);
+            model.Add("clientStylists", clientStylists);
             return View(model);
         }
-        [HttpGet("/clients/{id}/customer")]
-        public ActionResult Customer(int id)
+        [HttpGet("/clients/{id}/checkout")]
+        public ActionResult Checkout(int id)
         {
             Dictionary<string, object> model = new Dictionary<string, object>();
-            Client Client = Client.Find(id);
-            List<Stylist> availablebooks = Stylist.GetAvailableStylist();
-            model.Add("Client", Client);
-            model.Add("availableBooks", availablebooks);
+            Client client = Client.Find(id);
+            List<Stylist> availablestylists = Stylist.GetAvailableStylists();
+            model.Add("client", client);
+            model.Add("availableStylists", availablestylists);
             return View(model);
         }
-        [HttpPost("/clients/{id}/customer/show")]
-        public ActionResult Show(int customer, DateTime dueDate, int id)
+        [HttpPost("/clients/{id}/checkout/show")]
+        public ActionResult Show(int checkoutStylist, DateTime dueDate, int id)
         {
-            Dictionary<string,object> model= new Dictionary<string,object>();
-            int copyNumber = Stylist.FindCustomer(customer)-1;
-            Stylist.Customer(customer,copyNumber);
-            Client Client = Client.Find(id);
-            Client.AddClients(customer, dueDate);
-            List<Stylist> clientStylist= Client.GetStylist();
-            
-            model.Add("Client",Client);
-            model.Add("clientStylist",clientStylist);
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            int customerNumber = Stylist.FindCustomer(checkoutStylist) - 1;
+            Stylist.Checkout(checkoutStylist, customerNumber);
+            Client client = Client.Find(id);
+            client.AddCustomersClients(checkoutStylist, dueDate);
+            List<Stylist> clientStylists = client.GetStylists();
+
+            model.Add("client", client);
+            model.Add("clientStylists", clientStylists);
             return View(model);
         }
         [HttpGet("/clients/{id}/edit")]
         public ActionResult Edit(int id)
         {
-            Client Client = Client.Find(id);
-            return View(Client);
+            Client client = Client.Find(id);
+            return View(client);
         }
         [HttpPost("/clients/{id}")]
-        public ActionResult Show(string newPatron, int id)
+        public ActionResult Show(string newClient, int id)
         {
-            Client Client = Client.Find(id);
-            Client.Edit(newPatron);
-            Dictionary<string,object> model= new Dictionary<string,object>();
-            List<Stylist> clientStylist= Client.GetStylist();
-            model.Add("Client",Client);
-            model.Add("clientStylist",clientStylist);
+            Client client = Client.Find(id);
+            client.Edit(newClient);
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            List<Stylist> clientStylists = client.GetStylists();
+            model.Add("client", client);
+            model.Add("clientStylists", clientStylists);
             return View(model);
         }
     }

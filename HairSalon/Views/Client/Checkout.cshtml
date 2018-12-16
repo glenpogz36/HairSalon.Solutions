@@ -4,15 +4,15 @@
 <hr>
 <div class="container">
 <h1>Checkout a new  Customer</h1>
-<form action='/clients/@Model["client"].GetId()/customer/show' method="post">
-<select id="checkoutcustomer" name="checkoutcustomer">
-  @foreach (var availablestyle in Model["availabStyle"])
+<form action='/clients/@Model["client"].GetId()/checkout/show' method="post">
+<select id="checkoutStylist" name="checkoutStylist">
+  @foreach (var availablestyle in Model["availableStylists"])
   {
     <option value=@availablestyle.GetId()>@availablestyle.GetStylist()</option>
   }
 </select>
 <label name="dueDate">Due date </label>
-<input name="dueDate" id="dueDate" type="date">
+<input name="dueDate" id="dueDate" type="datetime-local">
 
 <button class="btn btn-primary" type='submit'>Checkout book</button>
 </form>
