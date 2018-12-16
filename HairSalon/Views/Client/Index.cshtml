@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+<hr>
+<div class="container">
+<h1>Here are all the Clients</h1>
+<ol>
+@foreach (var client in Model)
+{
+    <li><h2><a href="/clients/@client.GetId()">@client.GetName() </a></h2> <a href="/clients/@client.GetId()/edit" >Edit</a></li>
+}
+</ol>
+</div>
+<a href="/clients/new" class="btn btn-success">Add new Client</a>

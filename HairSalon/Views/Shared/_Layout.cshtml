@@ -2,21 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>HairSalon</title>
+    <title>Library</title>
     <link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css>
     <link rel="stylesheet" href="~/css/styles.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="~/js/scripts.js"></script>
   </head>
   <body>
-    <div class="nav">
-<a class="active" href="/">Home</a>
-<a href="/employee">Employee</a>
-<a href="/stylists">Specialist</a>
-<a href="/stylists/new">Hiring</a>
-<a href="/stylists/{id}">Clients</a>
-<!-- <a href="/">About Us</a> -->
-</div>
+  <div class="nav">
+<a href="/" class="btn btn-light">Home </a>
+<a href="/employees" class="btn btn-warning">Employee </a>
+<a href="/stylist" class="btn btn-danger">Specials </a>
+<a href="/clients" class="btn btn-primary">Clients </a>
+  </div>
     @RenderBody()
   </body>
 </html>

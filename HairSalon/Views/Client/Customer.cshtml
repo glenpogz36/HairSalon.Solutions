@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+<hr>
+<div class="container">
+<h1>Checkout a new  Customer</h1>
+<form action='/clients/@Model["client"].GetId()/customer/show' method="post">
+<select id="checkoutcustomer" name="checkoutcustomer">
+  @foreach (var availablestyle in Model["availabStyle"])
+  {
+    <option value=@availablestyle.GetId()>@availablestyle.GetStylist()</option>
+  }
+</select>
+<label name="dueDate">Due date </label>
+<input name="dueDate" id="dueDate" type="date">
+
+<button class="btn btn-primary" type='submit'>Checkout book</button>
+</form>
+</div>
+<hr>
+<a href="/clients" class="btn btn-info">Back to Clients</a>

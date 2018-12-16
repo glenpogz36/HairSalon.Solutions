@@ -1,22 +1,14 @@
 @{
-Layout = "_Layout";
+  Layout = "_Layout";
 }
+<hr>
 <div class="container">
-<h1>Employee Stylist</h1>
-<hr />
-
-
-    @foreach (var item in Model)
-    {
-      <li><a href="stylists/@item.GetId()"> @item.GetName() <a href="/"()/edit" >Edit</a>   <a href="/"()/edit" >delete</a></li> 
-
-    }
-
-
-
-<form action="stylists/delete" method="post">
-<a class="btn btn-info"  href="/stylists/new">Add a new Hire</a>
-<a class="btn btn-primary" href="/">Go back </a>
-<button type="submit" class="btn btn-warning">Delete</button>
-</form>
+<h1>Here are all the available Syles</h1>
+<ol>
+@foreach (var style in Model)
+{
+    <li><h2><a href="/styles/@style.GetId()">@style.GetStyle() </a></h2> <a href="/styles/@style.GetId()/edit" >Edit</a></li>
+}
+</ol>
 </div>
+<a href="/styles/new" class="btn btn-success">Add new Style</a>

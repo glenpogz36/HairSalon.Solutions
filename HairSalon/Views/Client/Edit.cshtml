@@ -2,11 +2,11 @@
   Layout = "_Layout";
 }
  <div class="container">
-<h1>Edit Title</h1>
+<h1>Edit Client</h1>
 <hr>
 <h2>Edit: @Model.GetClientName()</h2>
-<form action="/client/@Model.GetId()" method="post">
-  <label name="newClient">New Author's Name</label>
+<form action="/clients/@Model.GetId()" method="post">
+  <label name="newClient">New Client's Name</label>
   <input id="newClient" type="text" name="newClient" value="@Model.GetClientName()">
   <Button class="btn btn-info" type="submit">Update</Button>
 </form>

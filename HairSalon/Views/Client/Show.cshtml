@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+<hr>
+<div class="container">
+<h1>List of all clients  for <a href='/clients'>@Model["client"].GetClientName()</a></h1>
+<ol>
+@foreach (var stylist in Model["clientstylist"])
+{
+  <li><a href='/stylists/@stylist.GetId()'>@stylist.GetStylist()</a> the due Date is : @stylist.GetStylistDueDate().ToString("yyyy-MM-dd")</li>
+}
+</ol>
+</div>
+<a href='/clients/@Model["client"].GetId()/customer' class="btn btn-success">Checkout a stylist</a>
+<a href="/clients" class="btn btn-success">Go back to client's list</a>

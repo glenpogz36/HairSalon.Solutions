@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+<hr>
+<div class="container">
+<h1>The employee <a href='/employees'>@Model["employee"].GetName()</a> specializes</h1>
+<ol>
+@foreach (var stylist in Model["employeeStylist"])
+{
+  <li><a href='/stylists/@stylist.GetId()'>@stylist.GetStylist()</a></li>
+}
+</ol>
+</div>
+<a href="/stylist" class="btn btn-success">Go back to amployee's speacialty</a>
