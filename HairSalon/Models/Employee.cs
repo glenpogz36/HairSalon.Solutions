@@ -25,6 +25,20 @@ namespace HairSalon.Models
             return _id;
         }
 
+        public override bool Equals(System.Object otherEmployee)
+        {
+            if (!(otherEmployee is Employee))
+            {
+                return false;
+            }
+            else
+            {
+                Employee newEmployee = (Employee)otherEmployee;
+                bool idEquality = (this.GetId() == newEmployee.GetId());
+                bool nameEquality = (this.GetName() == newEmployee.GetName());
+                return (idEquality && nameEquality);
+            }
+        }
                public void Save()
         {
             MySqlConnection conn = DB.Connection();
@@ -81,18 +95,18 @@ namespace HairSalon.Models
 
         var rdr = cmd.ExecuteReader() as MySqlDataReader;
         int id = 0;
-        string emplyee = "";
+        string employee = "";
         
 
 
         while (rdr.Read())
         {
             id = rdr.GetInt32(0);
-            emplyee = rdr.GetString(1);
+            employee = rdr.GetString(1);
 
 
         }
-        Employee foundEmployee = new Employee(emplyee, id);
+        Employee foundEmployee = new Employee(employee, id);
 
         conn.Close();
         if(conn != null)
@@ -107,9 +121,9 @@ namespace HairSalon.Models
             MySqlConnection conn = DB.Connection();
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT stylist.* FROM employee
+            cmd.CommandText = @"SELECT stylists.* FROM employee
                 JOIN employee_stylist ON (employee.id = employee_stylist.employee_id)
-                JOIN stylist ON (employee_stylist.stylist_id = stylist.id)
+                JOIN stylists ON (employee_stylist.stylist_id = stylists.id)
                 WHERE employee.id = @employeeId;";
             MySqlParameter employeeIdParameter = new MySqlParameter();
             employeeIdParameter.ParameterName = "@employeeId";

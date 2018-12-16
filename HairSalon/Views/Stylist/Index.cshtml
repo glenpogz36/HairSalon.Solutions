@@ -5,10 +5,10 @@
 <div class="container">
 <h1>Here are all the available Syles</h1>
 <ol>
-@foreach (var style in Model)
+@foreach (var stylist in Model)
 {
-    <li><h2><a href="/styles/@style.GetId()">@style.GetStyle() </a></h2> <a href="/styles/@style.GetId()/edit" >Edit</a></li>
+    <li><h2><a href="/stylists/@stylist.GetId()">@stylist.GetStyle() </a></h2> <a href="/stylists/@stylist.GetId()/edit" >Edit</a></li>
 }
 </ol>
 </div>
-<a href="/styles/new" class="btn btn-success">Add new Style</a>
+<a href="/stylists/new" class="btn btn-success">Add new Style</a>

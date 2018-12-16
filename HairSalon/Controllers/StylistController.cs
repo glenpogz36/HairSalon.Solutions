@@ -8,19 +8,19 @@ namespace HairSalon.Controllers
 
     public class StylistController : Controller
     {
-        [HttpGet("/stylist")]
+        [HttpGet("/stylists")]
         public ActionResult Index()
         {
             List<Stylist> allStylists= Stylist.GetAll();
             return View(allStylists);
         }
-        [HttpGet("/stylist/new")]
+        [HttpGet("/stylists/new")]
         public ActionResult New()
         {
              List<Employee> allEmployees= Employee.GetAll();
             return View(allEmployees);
         }
-        [HttpPost("/stylist")]
+        [HttpPost("/stylists")]
         public ActionResult Index(string stylistname, int style, int customer)
         {
             Stylist stylist = new Stylist(stylistname);
@@ -31,7 +31,7 @@ namespace HairSalon.Controllers
 
             return View(allStylists);
         }
-        [HttpGet("/stylist/{id}")]
+        [HttpGet("/stylists/{id}")]
         public ActionResult Show(int id)
         {
             Dictionary<string,object> model = new Dictionary<string,object>();
@@ -43,13 +43,13 @@ namespace HairSalon.Controllers
             model.Add("clients",clients);
             return View(model);
         }
-        [HttpGet("/stylist/{id}/edit")]
+        [HttpGet("/stylists/{id}/edit")]
         public ActionResult Edit(int id)
         {
             Stylist stylists = Stylist.Find(id);
             return View(stylists);
         }
-        [HttpPost("/stylist/{id}")]
+        [HttpPost("/stylists/{id}")]
         public ActionResult Show(string newTitle, int id)
         {
             Stylist stylists = Stylist.Find(id);

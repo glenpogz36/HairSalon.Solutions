@@ -4,9 +4,9 @@
 <hr>
 <div class="container">
 <h1>Add a new  Style</h1>
-<form action="/styles" method="post">
-<label name="style">Specialty </label>
-<input name="style" id="style" type="text">
+<form action="/stylists" method="post">
+<label name="stylist">Specialty </label>
+<input name="stylist" id="stylist" type="text">
 <select id="stylistEmployee" name="stylistEmployee">
   @foreach (var employee in Model)
   {
@@ -19,4 +19,4 @@
 </form>
 </div>
 <hr>
-<a href="/styles" class="btn btn-info">Back to Styles</a>
+<a href="/stylists" class="btn btn-info">Back to Styles</a>

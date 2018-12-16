@@ -31,9 +31,9 @@ namespace HairSalon.Controllers
         {
             Dictionary<string,object> model= new Dictionary<string,object>();
             Employee employee= Employee.Find(id);
-            List<Stylist> employeeStylists= employee.GetStylist();
+            List<Stylist> employeeStylist = employee.GetStylist();
             model.Add("employee",employee);
-            model.Add("employeeStylists",employeeStylists);
+            model.Add("employeeStylist",employeeStylist);
             return View(model);
         }
         [HttpGet("/employees/{id}/edit")]
@@ -43,14 +43,14 @@ namespace HairSalon.Controllers
             return View(employee);
         }
         [HttpPost("/employees/{id}")]
-        public ActionResult Show(string newAuthor, int id)
+        public ActionResult Show(string newEmployee, int id)
         {
             Employee employee = Employee.Find(id);
-            employee.Edit(newAuthor);
+            employee.Edit(newEmployee);
             Dictionary<string,object> model= new Dictionary<string,object>();
-            List<Stylist> employeeStylists= employee.GetStylist();
+            List<Stylist> employeeStylist = employee.GetStylist();
             model.Add("employee",employee);
-            model.Add("employeeStylists",employeeStylists);
+            model.Add("employeeStylist",employeeStylist);
             return View(model);
         }
 
