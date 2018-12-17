@@ -11,7 +11,7 @@ namespace HairSalon.Test
     {
         public void Dispose()
         {
-            Stylist.DeleteAll();
+            Stylist.ClearAll();
         }
         public StylistTests()
         {

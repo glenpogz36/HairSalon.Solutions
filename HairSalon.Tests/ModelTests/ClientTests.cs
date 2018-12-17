@@ -11,7 +11,7 @@ namespace HairSalon.Test
     {
         public void Dispose()
         {
-            Client.DeleteAll();
+            Client.ClearAll();
         }
         public ClientTests()
         {
@@ -66,8 +66,8 @@ namespace HairSalon.Test
         //Act
         Client savedClient = Client.GetAll()[0];
 
-        int result = savedClient.GetClientId();
-        int testId = testClient.GetClientId();
+        int result = savedClient.GetId();
+        int testId = testClient.GetId();
 
         //Assert
         Assert.AreEqual(testId, result);
