@@ -7,8 +7,10 @@
 <ol>
 @foreach (var employee in Model)
 {
-    <li><h2><a href="/employees/@employee.GetId()">@employee.GetName() </a></h2> <a href="/employees/@employee.GetId()/edit" >Edit</a></li>
+    <li><h2><a href="/employees/@employee.GetId()">@employee.GetName() </a></h2> <a href="/employees/@employee.GetId()/edit" >Edit</a>
+    <a href="/employees/@employee.GetId()/delete">Delete</li>
 }
+    
 </ol>
 </div>
 <hr>

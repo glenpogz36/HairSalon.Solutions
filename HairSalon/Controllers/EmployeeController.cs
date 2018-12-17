@@ -53,6 +53,12 @@ namespace HairSalon.Controllers
             model.Add("employeeStylists", employeeStylists);
             return View(model);
         }
-
+        [HttpGet("/employees/{employeeId}/delete")]
+        public ActionResult Delete(int employeeId)
+        {
+            Employee thisEmployee = Employee.Find(employeeId);
+            thisEmployee.Delete();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -7,7 +7,8 @@
 <ol>
 @foreach (var stylist in Model)
 {
-    <li><h2><a href="/stylists/@stylist.GetId()">@stylist.GetStylist() </a></h2> <a href="/stylists/@stylist.GetId()/edit" >Edit</a></li>
+    <li><h2><a href="/stylists/@stylist.GetId()">@stylist.GetStylist() </a></h2> <a href="/stylists/@stylist.GetId()/edit" >Edit</a>
+    <a href="/stylists/@stylist.GetId()/delete">Delete</li>
 }
 </ol>
 </div>

@@ -7,7 +7,8 @@
 <ol>
 @foreach (var client in Model)
 {
-    <li><h2><a href="/clients/@client.GetId()">@client.GetName() </a></h2> <a href="/clients/@client.GetId()/edit" >Edit</a></li>
+    <li><h2><a href="/clients/@client.GetId()">@client.GetName() </a></h2> <a href="/clients/@client.GetId()/edit" >Edit</a>
+    <a href="/clients/@client.GetId()/delete">Delete</li>
 }
 </ol>
 </div>
