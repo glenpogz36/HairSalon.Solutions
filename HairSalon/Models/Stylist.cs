@@ -71,7 +71,7 @@ namespace HairSalon.Models
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO employees_stylits (employee_id, stylist_id) VALUES (@employeeId, @stylistId);";
+            cmd.CommandText = @"INSERT INTO employees_stylists (employee_id, stylist_id) VALUES (@employeeId, @stylistId);";
 
             MySqlParameter stylist_id = new MySqlParameter();
             stylist_id.ParameterName = "@stylistId";
