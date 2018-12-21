@@ -60,5 +60,11 @@ namespace HairSalon.Controllers
             thisEmployee.Delete();
             return RedirectToAction("Index");
         }
+        [HttpGet("/employees/deleteall")]
+        public ActionResult DeleteAll()
+        {
+            Employee.ClearAll();
+            return RedirectToAction("Index");
+        }
     }
 }

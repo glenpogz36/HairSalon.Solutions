@@ -91,6 +91,6 @@ namespace HairSalon.Controllers
             Client.ClearAll();
             return RedirectToAction("Index");
         }
-        
+
     }
 }
