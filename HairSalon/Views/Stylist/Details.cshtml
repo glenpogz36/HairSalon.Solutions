@@ -1,0 +1,23 @@
+
+@{
+Layout = "_Layout";
+}
+<div class="container">
+<h2>Here are all the clients for you:  @Model["stylist"].GetName()</h2>
+<ol>
+@foreach (var client in @Model["client"])
+{
+  <li><h3><a href='/stylists/@Model["stylist"].GetId()/clients/@client.GetClientId()'>@client.GetClientName()</h3></li>
+}
+</ol>
+<hr>
+<br>
+
+
+
+<p><a href='/stylists/new' class="btn btn-info">Add another stylist</a></p>
+<p><a href='/stylists' class="btn btn-info">View all Stylists</a></p>
+<hr>
+<p><a href='/stylists/@Model["stylist"].GetId()/clients/new' class="btn btn-info">Add a client</a></p>
+<p><a href='/stylists/@Model["stylist"].GetId()/clients/delete' class="btn btn-info">Clear all CLients</a></p>
+</div>

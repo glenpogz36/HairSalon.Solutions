@@ -1,19 +1,23 @@
 @{
-  Layout = "_Layout";
+Layout = "_Layout";
 }
-<hr>
 <div class="container">
-<h1>Here are all the available Styles</h1>
-<ol>
-@foreach (var stylist in Model)
+<h1>Stylists</h1>
+<hr />
+
+@if (@Model.Count != 0)
 {
-    <li><h2><a href="/stylists/@stylist.GetId()">@stylist.GetStylist() </a></h2> <a href="/stylists/@stylist.GetId()/edit" >Edit</a>
-    <a href="/stylists/@stylist.GetId()/delete">Delete</li>
+  <ol>
+    @foreach (var stylist in @Model)
+    {
+      <li><h4><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a> | <a href="/stylists/@stylist.GetId()/specialties">Specialties!</a> <br>  <a href="/stylists/@stylist.GetId()/update">Edit</a> | <a method="post" href="/stylists/@stylist.GetId()/delete">Delete</a> </h4></li>
+
+    }
+  </ol>
 }
-</ol>
+<p><a href="/stylists/new" class="btn btn-info">Add a new stylist.</a></p>
+<hr>
+<form action="stylists/delete" method="post">
+<button type="submit" class="btn btn-info">Clear All</button>
+</form>
 </div>
-<a href="/stylists/new" class="btn btn-success">Add new Style</a>
- <a class="btn btn-danger" href="/stylists/deleteall">Delete All Speacialties</a>
-
-
-
