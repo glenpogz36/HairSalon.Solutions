@@ -7,19 +7,19 @@ using HairSalon.Models;
 namespace HairSalon.Tests
 {
     [TestClass]
-    public class EmployeeControllerTest
+    public class SpecialtyControllerTest
     {
-        [TestMethod]
-        public void Index_HasCorrectModelType_EmployeeList()
+      [TestMethod]
+        public void Index_HasCorrectModelType_SpecialtyList()
         {
             //Arrange
-            ViewResult indexView = new EmployeeController().Index() as ViewResult;
+            ViewResult indexView = new SpecialtyController().Index() as ViewResult;
 
             //Act
             var result = indexView.ViewData.Model;
 
             //Assert
-            Assert.IsInstanceOfType(result, typeof(List<Employee>));
+            Assert.IsInstanceOfType(result, typeof(List<Specialty>));
         }
     }
 }

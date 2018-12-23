@@ -1,23 +1,20 @@
 @{
 Layout = "_Layout";
 }
-<div class="container">
 <h1>Stylists</h1>
 <hr />
 
-@if (@Model.Count != 0)
-{
-  <ol>
+
+
     @foreach (var stylist in @Model)
     {
-      <li><h4><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a> | <a href="/stylists/@stylist.GetId()/specialties">Specialties!</a> <br>  <a href="/stylists/@stylist.GetId()/update">Edit</a> | <a method="post" href="/stylists/@stylist.GetId()/delete">Delete</a> </h4></li>
-
-    }
-  </ol>
+       <ul>
+      <li><h4>Click to Add Clients: <a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a> <br><br>  <a  href="/stylists/@stylist.GetId()/specialties">Specialties</a> | <a href="/stylists/@stylist.GetId()/update">Edit</a> | <a method="post" href="/stylists/@stylist.GetId()/delete">Delete</a> </h4></li>
+      <br>
+        </ul>
 }
-<p><a href="/stylists/new" class="btn btn-info">Add a new stylist.</a></p>
-<hr>
 <form action="stylists/delete" method="post">
-<button type="submit" class="btn btn-info">Clear All</button>
+<a href="/stylists/new" class="btn btn-success">Add a new stylist.</a>
+<button type="submit" class="btn btn-danger">Clear All</button>
 </form>
-</div>
+  

@@ -1,0 +1,23 @@
+@{
+Layout = "_Layout";
+}
+<div class="container">
+<h1>Clients</h1>
+
+
+@if (@Model.Count != 0)
+{
+  <ol>
+    @foreach (var clients in @Model)
+    {
+      <li><h4>@clients.GetClientName()<br>  <a href="/clients/@clients.GetClientId()/update">Edit</a> | <a method="post" href="/clients/@clients.GetClientId()/delete">Delete</a></h4> </li>
+
+    }
+  </ol>
+}
+
+<hr>
+ <a class="btn btn-success" href="/stylists/">Back to Stylists</a>
+ <a class="btn btn-danger" href="/clients/delete">Clear</a>
+</div>
+

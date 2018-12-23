@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace HairSalon.Test
 {
   [TestClass]
-    public class StylistTests : IDisposable
+    public class SpecialtyTests : IDisposable
     {
         public void Dispose()
         {
-            Stylist.DeleteAll();
+            Specialty.DeleteAll();
         }
-        public StylistTests()
+        public SpecialtyTests()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=glen_sale_test;";
         }
@@ -23,7 +23,7 @@ namespace HairSalon.Test
       {
         //Arrange
         //Act
-        int result = Stylist.GetAll().Count;
+        int result = Specialty.GetAll().Count;
 
       //Assert
       Assert.AreEqual(0, result);
@@ -31,25 +31,25 @@ namespace HairSalon.Test
 
 
       [TestMethod]
-      public void Equals_ReturnsTrueIfNamesAreTheSame_Stylist()
+      public void Equals_ReturnsTrueIfNamesAreTheSame_Specialty()
       {
         // Arrange, Act
-        Stylist firstStylist = new Stylist("Name");
-        Stylist secondStylist = new Stylist("Name");
+        Specialty firstSpecialty = new Specialty("Name");
+        Specialty secondSpecialty = new Specialty("Name");
 
         // Assert
-        Assert.AreEqual(firstStylist.GetName(), secondStylist.GetName());
+        Assert.AreEqual(firstSpecialty.GetSpecialtyName(), secondSpecialty.GetSpecialtyName());
       }
       [TestMethod]
-      public void Save_SavesToDatabase_StylistList()
+      public void Save_SavesToDatabase_SpecialtyList()
       {
         //Arrange
-        Stylist testStylist = new Stylist("Name");
+        Specialty testSpecialty = new Specialty("Name");
 
         //Act
-        testStylist.Save();
-        List<Stylist> result = Stylist.GetAll();
-        List<Stylist> testList = new List<Stylist>{testStylist};
+        testSpecialty.Save();
+        List<Specialty> result = Specialty.GetAll();
+        List<Specialty> testList = new List<Specialty>{testSpecialty};
 
         //Assert
         CollectionAssert.AreEqual(testList, result);
@@ -60,14 +60,14 @@ namespace HairSalon.Test
         public void Save_AssignsIdToObject_Id()
         {
           //Arrange
-          Stylist testStylist = new Stylist("Name");
+          Specialty testSpecialty = new Specialty("Name");
 
           //Act
-          testStylist.Save();
-          Stylist savedStylist = Stylist.GetAll()[0];
+          testSpecialty.Save();
+          Specialty savedSpecialty = Specialty.GetAll()[0];
 
-          int result = savedStylist.GetId();
-          int testId = testStylist.GetId();
+          int result = savedSpecialty.GetSpecialtyId();
+          int testId = testSpecialty.GetSpecialtyId();
 
           //Assert
           Assert.AreEqual(testId, result);
